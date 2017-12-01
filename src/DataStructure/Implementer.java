@@ -7,18 +7,18 @@ public class Implementer implements Controller {
 	public String listAllTermini()
 	{
 		Retrieve r = new Retrieve();
-		ArrayList<String> retrieve = r.getStations();
+		ArrayList<Station> retrieve = r.getStations();
 		ArrayList<Station> termini = new ArrayList<>();
 		String names = "";
 		int i = 0;
-		while(i <= retrieve.size()){
+		termini = retrieve;
+		while(i <= retrieve.size()-1){
 			
-			if(i == 0 || i == retrieve.size()){
-				termini.add(new Station(retrieve.get(i)));
-				names = names + termini.get(i).getName(); 
-			}
-			i++;
+				names = names + " " + termini.get(i).getName(); 
+				i++;
 		}
+			
+		
 		
 		if(names != null){
 			return names;

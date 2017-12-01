@@ -8,7 +8,7 @@ public class InformationCenter {
 	
 	public static void main(String[] args) {
 		Implementer i = new Implementer();
-		i.listAllTermini();
+		System.out.println(i.listAllTermini());
 		
 	}
 
