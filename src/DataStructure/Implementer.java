@@ -3,22 +3,30 @@ package DataStructure;
 import java.util.ArrayList;
 
 public class Implementer implements Controller {
+	private Retrieve r = new Retrieve();
+	private ArrayList<Station> retrieve;
+	
+	public Implementer() {
+		retrieve = new ArrayList<>();
+		retrieve = r.getStations();
+	}
 	
 	public String listAllTermini()
 	{
-		Retrieve r = new Retrieve();
-		ArrayList<Station> retrieve = r.getStations();
 		ArrayList<Station> termini = new ArrayList<>();
 		String names = "";
+		boolean isTerminus;
 		int i = 0;
-		termini = retrieve;
+		
 		while(i <= retrieve.size()-1){
-			
-				names = names + " " + termini.get(i).getName(); 
-				i++;
+			isTerminus = retrieve.get(i).isTerminus();
+			if(isTerminus == true) {
+				termini.add(retrieve.get(i));
+				names = names + retrieve.get(i).getName() + ", ";
+			}
+			i++;
 		}
 			
-		
 		
 		if(names != null){
 			return names;

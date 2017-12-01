@@ -4,6 +4,7 @@ public class Terminus extends Station {
 
 	public Terminus(String name){
 		super(name);
+		isTerminus = true;
 	}
 	
 	public String getName() {
@@ -14,7 +15,7 @@ public class Terminus extends Station {
 	
 	public boolean isTerminus() {
 		
-		return true;
+		return isTerminus;
 	}
 
 }

@@ -4,6 +4,7 @@ public class InbetweenStation extends Station {
 
 	public InbetweenStation(String name){
 		super(name);
+		isTerminus = false;
 	}
 	
 	public String getName() {
@@ -14,7 +15,7 @@ public class InbetweenStation extends Station {
 	
 	public boolean isTerminus() {
 		
-		return false;
+		return isTerminus;
 	}
 
 }

@@ -26,9 +26,6 @@ public class Retrieve {
 			
 			while(inputStream.hasNext()) 
 			{
-				if(linei == 11) {
-					System.out.println("hi");
-				}
 				String line = inputStream.nextLine();
 				cells = line.split(",");
 				int celli = 1;
@@ -36,7 +33,14 @@ public class Retrieve {
 				Lines[linei] = new MTRLine(cells[0]);
 				while(celli <= cells.length - 1) {
 					String j = cells[celli];
-					temp.add(new Station(j));
+					
+					if(celli == 1 || celli == cells.length - 1) {
+						temp.add(new Terminus(j));
+					}
+					else {
+						temp.add(new InbetweenStation(j));
+					}
+					
 					celli++;
 				}
 				linei++;
