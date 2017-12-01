@@ -7,14 +7,9 @@ public class InformationCenter {
 	static LinkedList<String> stationsToDisplay = new LinkedList<>();
 	
 	public static void main(String[] args) {
+		Implementer i = new Implementer();
+		i.listAllTermini();
 		
-		Retrieve r = new Retrieve();
-		r.readFile();
-		stationsToDisplay = r.getStations();
-		
-		for(String station : stationsToDisplay) {
-			System.out.println(station);
-		}
 	}
 
 	

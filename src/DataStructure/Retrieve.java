@@ -7,11 +7,12 @@ import java.util.Scanner;
 
 public class Retrieve {
 	private MTRLine[] Lines;
-	private LinkedList<String> temp;
-	
+	private ArrayList<String> temp;
+	private String[] cells;
 	public Retrieve() {
-		temp = new LinkedList<>();
+		temp = new ArrayList<>();
 		Lines = new MTRLine[11];
+		readFile();
 	}
 	
 	public void readFile() {
@@ -26,7 +27,7 @@ public class Retrieve {
 			{
 				temp = null;
 				String line = inputStream.nextLine();
-				String[] cells = line.split(",");
+				cells = line.split(",");
 				int celli = 1;
 				
 				Lines[linei] = new MTRLine(cells[0]);
@@ -36,7 +37,6 @@ public class Retrieve {
 					celli++;
 				}
 				linei++;
-				Lines[linei].addStations(temp);
 			}
 			 inputStream.close();
 		    } catch (FileNotFoundException e) { 
@@ -44,12 +44,8 @@ public class Retrieve {
 		    }
 	}
 	
-	public LinkedList<String> getStations() {
-		temp=null;
-		
-			temp = Lines[0].getStations();
-		
+	public ArrayList<String> getStations(){
 		return temp;
 	}
-
+	
 }
