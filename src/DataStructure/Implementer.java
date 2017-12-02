@@ -1,43 +1,42 @@
 package DataStructure;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Implementer implements Controller {
-	private Retrieve r = new Retrieve();
-	private ArrayList<Station> retrieve;
+	
+	Retrieve r;
 	
 	public Implementer() {
-		retrieve = new ArrayList<>();
-		retrieve = r.getStations();
+		r = new Retrieve();
 	}
 	
 	public String listAllTermini()
 	{
-		ArrayList<Station> termini = new ArrayList<>();
-		String names = "";
-		boolean isTerminus;
-		int i = 0;
 		
-		while(i <= retrieve.size()-1){
-			isTerminus = retrieve.get(i).isTerminus();
-			if(isTerminus == true) {
-				termini.add(retrieve.get(i));
-				names = names + retrieve.get(i).getName() + ", ";
-			}
-			i++;
+ 		ArrayList<Station> allTermini = new ArrayList<>();
+ 		allTermini.addAll(r.getAllTermini());
+ 		String terminiToString = "";
+ 		for(Station s: allTermini) {
+			terminiToString = terminiToString + s.getName() + ", ";
 		}
-			
-		
-		if(names != null){
-			return names;
-		}
-		return null;
+ 		
+ 		return terminiToString;
 	}
 
 	
 	public String listStationsInLine(String line) {
 		
-		return null;
+		HashMap<String, LinkedList<Station>> stations = new HashMap<>();
+		stations = r.getHashMap();
+		String stationsToString = "";
+	
+		for(Station s: stations.get(line)) {
+			stationsToString = stationsToString + s.getName() + ", ";
+		}
+		
+		return stationsToString;
 	}
 
 	
