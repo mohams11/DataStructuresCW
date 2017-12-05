@@ -10,7 +10,7 @@ public class Retrieve {
 	private ArrayList<Station> allTermini;
 	private String[] cells;
 	
-	HashMap<String, LinkedList<Station>> details;
+	HashMap<String, ArrayList<String>> details;
 	public Retrieve() {
 		allTermini = new ArrayList<>();
 		Lines = new MTRLine[12];
@@ -20,7 +20,7 @@ public class Retrieve {
 	}
 	
 	public void readFile() {
-		LinkedList<Station> tempStations = new LinkedList<>();
+		ArrayList<String> tempStations = new ArrayList<>();
 		
 		String mtrSystemFile = "MTRsystem_partial.csv";
 		File file = new File(mtrSystemFile);
@@ -38,11 +38,11 @@ public class Retrieve {
 				while(celli <= cells.length - 1)
 				{
 					if(celli == 1 || celli == cells.length - 1) {
-						tempStations.add(new Terminus(cells[celli]));
+						tempStations.add(cells[celli]);
 						allTermini.add(new Terminus(cells[celli]));
 					}
 					else {
-						tempStations.add(new InbetweenStation(cells[celli]));
+						tempStations.add(cells[celli]);
 					}
 					
 					celli++;
@@ -61,16 +61,16 @@ public class Retrieve {
 		    }
 	}
 	
-	public void addToHashMap(String lineName, LinkedList<Station> s) {
+	public void addToHashMap(String lineName, ArrayList<String> s) {
 		
-		details.put(lineName, new LinkedList<Station>(s));
+		details.put(lineName, new ArrayList<String>(s));
 	}
 	
 	public MTRLine[] getLines() {
 		return Lines;
 	}
 	
-	public HashMap<String, LinkedList<Station>> getHashMap(){
+	public HashMap<String, ArrayList<String>> getHashMap(){
 		return details;
 	}
 	
