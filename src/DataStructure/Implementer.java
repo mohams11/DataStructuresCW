@@ -3,20 +3,16 @@ package DataStructure;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
 
 
 public class Implementer implements Controller {
 	
 	Retrieve r;
-	HashMap<String, ArrayList<String>> stations = new HashMap<>();
+	HashMap<String, ArrayList<String>> stations;
 	
 	public Implementer() {
 		r = new Retrieve();
+		stations = new HashMap<>();
 	}
 	
 	public String listAllTermini()
@@ -51,12 +47,12 @@ public class Implementer implements Controller {
 		stations = r.getHashMap();
 		ArrayList<String> linkingLines = new ArrayList<>(); 
 		String connections = "The Lines following lines are connected: ";
-		boolean isNotLinked;
+		boolean isLinked;
 		linkingLines = stations.get(line);
 		
 		for(String key : stations.keySet()) {
-			isNotLinked = Collections.disjoint(linkingLines, stations.get(key));
-			if(isNotLinked == false && linkingLines != stations.get(key)) {
+			isLinked = !Collections.disjoint(linkingLines, stations.get(key));
+			if(isLinked == true && linkingLines != stations.get(key)) {
 				connections = connections + key + ", ";  
 			}
 		}
