@@ -1,8 +1,10 @@
 package DataStructure;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
@@ -48,27 +50,16 @@ public class Implementer implements Controller {
 	public String listAllDirectlyConnectedLines(String line) {
 		stations = r.getHashMap();
 		ArrayList<String> linkingLines = new ArrayList<>(); 
-		ArrayList<String> buffer = new ArrayList<>();
-		 String connections = "";
-		
-		
+		String connections = "The Lines following lines are connected: ";
+		boolean isNotLinked;
+		linkingLines = stations.get(line);
 		
 		for(String key : stations.keySet()) {
-			
-			
-			buffer = stations.get(key);
-			linkingLines = stations.get(line);
-			
-			linkingLines.retainAll(buffer);
-			
-			if(!linkingLines.isEmpty()) {
+			isNotLinked = Collections.disjoint(linkingLines, stations.get(key));
+			if(isNotLinked == false && linkingLines != stations.get(key)) {
 				connections = connections + key + ", ";  
-				
-				
 			}
 		}
-		
-		
 		return connections;
 	}
 
