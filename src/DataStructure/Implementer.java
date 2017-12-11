@@ -128,6 +128,7 @@ public class Implementer implements Controller {
 
 	public String showPathBetween(String stationA, String stationB) {
 		try {
+		listStationLinks();
 		//store the stations we want to search in a stack 
 		Stack<String> stationsToBeSearched = new Stack<>();
 		//store visited nodes which do not lead to the destination in a HashSet
