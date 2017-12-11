@@ -3,11 +3,12 @@ package DataStructure;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Implementer implements Controller {
 
 	Retrieve r;
-	HashMap<String, ArrayList<String>> stations;
+	HashMap<String, LinkedList<String>> stations;
 
 	public Implementer() {
 		r = new Retrieve();
@@ -25,10 +26,11 @@ public class Implementer implements Controller {
 
 		return terminiToString;
 	}
+	
 
 	public String listStationsInLine(String line) {
 
-		HashMap<String, ArrayList<String>> stations = new HashMap<>();
+		
 		stations = r.getHashMap();
 		String stationsToString = "";
 
@@ -38,16 +40,17 @@ public class Implementer implements Controller {
 
 		return stationsToString;
 	}
+	
 
 	public String listAllDirectlyConnectedLines(String line) {
 		String connections = "";
 		try {
 			stations = r.getHashMap();
-			ArrayList<String> linkingLines = new ArrayList<>();
-			connections = "The following lines are connected: ";
+			LinkedList<String> linkingLines = new LinkedList<>();
 			boolean isLinked;
+			connections = "The following lines are connected: ";
 			linkingLines = stations.get(line);
-
+			
 			for (String key : stations.keySet()) {
 
 				isLinked = !Collections.disjoint(linkingLines, stations.get(key));
