@@ -9,8 +9,8 @@ public class Retrieve {
 	private MTRLine[] Lines;
 	private ArrayList<Station> allTermini;
 	private String[] cells;
-	
 	HashMap<String, ArrayList<String>> details;
+	
 	public Retrieve() {
 		allTermini = new ArrayList<>();
 		Lines = new MTRLine[12];
