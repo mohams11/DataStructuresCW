@@ -9,7 +9,9 @@ public class Retrieve {
 	private MTRLine[] Lines;
 	private ArrayList<Station> allTermini;
 	private String[] cells;
-	HashMap<String, LinkedList<String>> details;
+
+	HashMap<String, ArrayList<String>> details;
+
 	
 	public Retrieve() {
 		allTermini = new ArrayList<>();
@@ -20,7 +22,7 @@ public class Retrieve {
 	}
 	
 	public void readFile() {
-		LinkedList<String> tempStations = new LinkedList<>();
+		ArrayList<String> tempStations = new ArrayList<>();
 		
 		String mtrSystemFile = "MTRsystem_partial.csv";
 		File file = new File(mtrSystemFile);
@@ -61,16 +63,16 @@ public class Retrieve {
 		    }
 	}
 	
-	public void addToHashMap(String lineName, LinkedList<String> s) {
+	public void addToHashMap(String lineName, ArrayList<String> s) {
 		
-		details.put(lineName, new LinkedList<String>(s));
+		details.put(lineName, new ArrayList<String>(s));
 	}
 	
 	public MTRLine[] getLines() {
 		return Lines;
 	}
 	
-	public HashMap<String, LinkedList<String>> getHashMap(){
+	public HashMap<String, ArrayList<String>> getHashMap(){
 		return details;
 	}
 	
