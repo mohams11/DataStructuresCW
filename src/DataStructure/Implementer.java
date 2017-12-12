@@ -84,11 +84,11 @@ public class Implementer implements Controller {
 
 	public String listAllTermini() {
 
-		ArrayList<Station> allTermini = new ArrayList<>();
+		ArrayList<String> allTermini = new ArrayList<>();
 		allTermini.addAll(r.getAllTermini());
 		String terminiToString = "";
-		for (Station s : allTermini) {
-			terminiToString = terminiToString + s.getName() + ", ";
+		for (String s : allTermini) {
+			terminiToString = terminiToString + s + ", ";
 		}
 
 		return terminiToString;
