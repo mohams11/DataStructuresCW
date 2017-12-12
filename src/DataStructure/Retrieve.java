@@ -6,14 +6,12 @@ import java.io.File;
 
 
 public class Retrieve {
-	private MTRLine[] Lines;
-	private ArrayList<Station> allTermini;
+	private ArrayList<String> allTermini;
 	private String[] cells;
 	HashMap<String, ArrayList<String>> details;
 	
 	public Retrieve() {
 		allTermini = new ArrayList<>();
-		Lines = new MTRLine[12];
 		cells = new String[20];
 		details = new HashMap<>();
 		readFile();
@@ -38,13 +36,10 @@ public class Retrieve {
 				while(celli <= cells.length - 1)
 				{
 					if(celli == 1 || celli == cells.length - 1) {
-						tempStations.add(cells[celli]);
-						allTermini.add(new Terminus(cells[celli]));
-					}
-					else {
-						tempStations.add(cells[celli]);
+						allTermini.add((cells[celli]));
 					}
 					
+					tempStations.add(cells[celli]);
 					celli++;
 				}
 				
@@ -66,15 +61,11 @@ public class Retrieve {
 		details.put(lineName, new ArrayList<String>(s));
 	}
 	
-	public MTRLine[] getLines() {
-		return Lines;
-	}
-	
 	public HashMap<String, ArrayList<String>> getHashMap(){
 		return details;
 	}
 	
-	public ArrayList<Station> getAllTermini(){
+	public ArrayList<String> getAllTermini(){
 		return allTermini;
 	}
 	
