@@ -34,9 +34,7 @@ public class Implementer implements Controller {
 		//considering that there is a previous and next and store that into an empty arraylist (links)
 		//then go through the next line and if that station is there do the previous next and add to links
 		//if there isn't go to the next line
-		
-		HashMap<String, ArrayList<String>> stations = new HashMap<>();
-		//new hashmap stations
+	
 		stations = r.getHashMap();
 		//assign new hashmap to the hashmap in Retrieve class (line is key, stations are value)
 		for (Entry<String, ArrayList<String>> entry : stations.entrySet()) 
