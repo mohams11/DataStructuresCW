@@ -1,7 +1,6 @@
 package DataStructure;
 
 import java.util.ArrayList;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,7 +22,7 @@ public class Implementer implements Controller {
 	private Retrieve r;
 	//r variable of type Retrieve class, will be used later to call methods from Retrieve class
 	private HashMap<String, ArrayList<String>> stations;
-	//stations variable which is a HashMap
+	//stations hashmap will hold all the stations 
 
 	public Implementer() 
 	{
@@ -52,7 +51,7 @@ public class Implementer implements Controller {
 			//concatenate the stations to the empty string created above
 		}
 		return terminiToString;
-		//print out all termini
+		//returns the string of termini to be printed
 	}
 
 	/**
@@ -67,13 +66,13 @@ public class Implementer implements Controller {
 		String stationsToString = "";
 		//create empty string stationsToString
 		for (String s : stations.get(line))
-		//for every station get the line
+		//loop through every station for the given line
 		{
 			//concatenate the stations to the empty string created above
 			stationsToString = stationsToString + s + ", ";
 		}
 		return stationsToString;
-		//print out stations in a line
+		//return the string of stations to be printed
 	}
 
 	/**
@@ -88,22 +87,22 @@ public class Implementer implements Controller {
 		try {
 			stations = r.getStations();
 			//assign stations HashMap to the HashMap created in Retrieve class
-			ArrayList<String> linkingLines = new ArrayList<>();
+			ArrayList<String> linkingLine = new ArrayList<>();
 			//create arraylist linkingLines to store linking lines
 			boolean isLinked;
 			//boolean condition determining if lines are linked
 			connections = "The following lines are connected: ";
 			//add a message to the empty string created above
-			linkingLines = stations.get(line);
-			//assign the arraylist to store the lines
+			linkingLine = stations.get(line);
+			//stores the line input by the user
 
 			for (String key : stations.keySet())
-			//for every key in the stations HashMap store it in a set of keys
+			//loop through every key in the hashmap
 			{
-				isLinked = !Collections.disjoint(linkingLines, stations.get(key));
-				//boolean variable isLinked returns true or false depending on if linking lines array list and the stations HashMap keys (storing lines) contain common stations
-				if (isLinked == true && linkingLines != stations.get(key))
-				//if there are common stations between the arraylist (storing lines) and HashMap (keys storing lines)
+				isLinked = !Collections.disjoint(linkingLine, stations.get(key));
+				//boolean variable isLinked returns true or false depending on if line the user typed has any stations in common with the specific list of stations
+				if (isLinked == true && linkingLine != stations.get(key))
+				//checks if the lines are linked and if its not the line the user typed in
 				{
 					//concatenate the key to connections
 					connections = connections + key + ", ";
