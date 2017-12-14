@@ -21,7 +21,7 @@ public interface Controller {
 	
 	/**
 	 * Lists the stations in their respective order in the specified MTR line.
-	 * @param line	a specified line in the MTR network
+	 * @param line a specified line in the MTR network
 	 * @return	a String representation of all stations in the specified MTR line.
 	 */
 	String listStationsInLine(String line);
